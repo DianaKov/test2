@@ -33,7 +33,11 @@ public class CalculationController {
             default:
                 return ResponseEntity.badRequest().build();
         }
-        Calculation calculation = new Calculation(type, x, y, result);
+        Calculation calculation = new Calculation();
+        calculation.setType(type);
+        calculation.setX(x);
+        calculation.setY(y);
+        calculation.setResult(result);
         calculationRepository.save(calculation);
         Map<String, Integer> response = new HashMap<>();
         response.put("result", result);
